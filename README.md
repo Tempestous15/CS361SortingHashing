@@ -10,8 +10,8 @@ All changes go through pull requests. Do **not** push directly to `main`.
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/YOUR-REPO-URL.git
-   cd CS361-Sorting-Hashing
+   git clone https://github.com/rickwgarcia/CS361SortingHashing.git
+   cd CS361SortingHashing
    ```
 
 2. **Create a branch** for your work
