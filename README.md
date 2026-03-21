@@ -8,9 +8,9 @@
 
 | Name | Code | Report Section |
 |------|------|----------------|
-| Rick | 3-way Merge Sort + benchmarking script (int & float timing) | Introduction, Merge Sort methods & results |
-| **Member B** | Hash functions (Phase 2) + Bloom Filter core (bit array, insert/query) | Preliminaries, Hash function design & Bloom Filter implementation |
-| **Member C** | Password checker (dataset loading, train/test splits) + Phase 5 analysis (false positive rate, memory, query timing) | Results & analysis, Conclusion | 
+| Rick | 3-way Merge Sort + benchmarking script (int & float timing) |  |
+| **Member B** | Hash functions (Phase 2) + Bloom Filter core (bit array, insert/query) |  |
+| **Member C** | Password checker (dataset loading, train/test splits) + Phase 5 analysis (false positive rate, memory, query timing) |  | 
 
 ---
 
