@@ -1,4 +1,3 @@
-import random
 
 def merge_sort(array, low, high):
     if low < high:
@@ -55,16 +54,3 @@ def merge(array, low, low_mid, high_mid, high):
         array[low + i] = temp[i] 
 
 
-array = [0] * 10
-for i in range(10):
-    # Generate random number between 0 and 100
-    array[i] = random.randint(0, 99)
-    print(array[i], end=" ")
-
-print()
-merge_sort(array, 0, 9)
-
-# Print array
-for i in range(10):
-    print(array[i], end=" ")
-print()
