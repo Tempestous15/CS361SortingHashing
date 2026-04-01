@@ -13,6 +13,8 @@
 | **Member C** | Password checker (dataset loading, train/test splits) + Phase 5 analysis (false positive rate, memory, query timing) |  | 
 
 ---
+## Overleaf Write-up Link
+https://www.overleaf.com/5353324827wqwtdkbvfqdh#4ece55
 
 ## Contributing
 
