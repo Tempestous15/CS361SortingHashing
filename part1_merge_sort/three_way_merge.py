@@ -1,3 +1,10 @@
+# ----------------------------------------------------------
+# File:          three_way_merge.py
+# Description:   Three way merge sort
+# Author:        Rick Garcia
+# Email:         rickwgarcia@unm.edu
+# Date:          2026-04-02
+# ----------------------------------------------------------
 
 def merge_sort(array, low, high):
     if low < high:
@@ -16,7 +23,7 @@ def merge(array, low, low_mid, high_mid, high):
     p = high_mid + 1
     k = 0
     while i <= low_mid and j <= high_mid and p <= high: 
-        if array[i] < array[j] and array[i] < array[p]:     # If the value in A is lower than the value in B
+        if array[i] <= array[j] and array[i] <= array[p]:     # If the value in A is lower than the value in B
             temp[k] = array[i]          # Increment A
             i += 1
         elif array[j] < array[p] and array[j] < array[i]:   # If the value in B is lower than the value in C
