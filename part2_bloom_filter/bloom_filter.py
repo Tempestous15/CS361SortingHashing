@@ -4,7 +4,7 @@
 import math
 # from test_bloom_filter import test_k_indices
 # from test_bloom_filter import test_determinism
-from test_bloom_filter import test_collision_resistance
+from test_bloom_filter import test_false_positive_rate
 
 class bloom_filter:
     def __init__(self, hash_file, acceptable_error_rate):
@@ -13,8 +13,9 @@ class bloom_filter:
         """
         file_size = num_lines(hash_file)
         self.size = get_optimal_size(file_size, acceptable_error_rate)
-        self.hash_count = get_optimal_hash_count(self.size, file_size)
-        num_bytes = (self.size + 7) // 8 
+        self.hash_count = get_optimal_hash_count(self.size, file_size) 
+        # Adding 7 here to effectively "ceiling" when doing integer division
+        num_bytes = (self.size + 7) // 8
         self.bit_array = bytearray(num_bytes)
         self.load(hash_file)
         
@@ -28,7 +29,7 @@ class bloom_filter:
         
         # We append the 'seed' to the item so each of our k passes 
         # generates a completely different hash result.
-        seeded_item = f"{item}:{seed}"
+        seeded_item = f"{seed}:{item}"
         
         hash_value = offset_basis
         
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     ]
     # test_k_indices(bf, sample_items)
     # test_determinism(bf, sample_items, 10)
-    test_collision_resistance(bf, 100000)
+    test_false_positive_rate(bf, 100000)
 
 
     
