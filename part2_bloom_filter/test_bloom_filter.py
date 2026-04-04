@@ -1,3 +1,5 @@
+import time
+
 def test_k_indices(bf, test_items):
     """
     Tests if the Bloom filter generates exactly 'k' indices 
@@ -7,7 +9,6 @@ def test_k_indices(bf, test_items):
     print(f"\n--- Testing Hash Indices ---")
     print(f"Expected number of indices (k): {expected_k}")
     print(f"Bit array size (m): {bf.size}")
-    print("-" * 30)
 
     all_passed = True
 
@@ -32,12 +33,11 @@ def test_k_indices(bf, test_items):
         if not is_correct_length or not are_in_bounds:
             all_passed = False
             
-    print("-" * 30)
     if all_passed:
         print("SUCCESS: The Bloom filter correctly returns 'k' valid indices!")
     else:
         print("FAILURE: Check your index generation logic.")
-    print("-" * 30 + "\n")
+    print("-" * 30)
 
 def test_determinism(bf, test_items, num_trials=5):
     """
@@ -46,7 +46,6 @@ def test_determinism(bf, test_items, num_trials=5):
     """
     print(f"\n--- Testing Hash Determinism ---")
     print(f"Number of trials per item: {num_trials}")
-    print("-" * 30)
 
     all_passed = True
 
@@ -68,16 +67,16 @@ def test_determinism(bf, test_items, num_trials=5):
         print(f"  Consistent indices across {num_trials} runs: {'PASS' if is_deterministic else 'FAIL'}")
         
         if not is_deterministic:
-            all_passed = False
+            all_passed = False   
 
-    print("-" * 30)
     if all_passed:
         print("SUCCESS: The hash function is perfectly deterministic!")
     else:
         print("FAILURE: The hash function returned different indices for the same input.")
-    print("-" * 30 + "\n")
+    print("-" * 30)
 
 def test_false_positive_rate(bf, num_checks=100000):
+    print(f"\n--- Testing Hash False Positive Rate ---")
     false_positives = 0
     print(f"Checking {num_checks} random strings against the password filter...")
     
@@ -89,3 +88,32 @@ def test_false_positive_rate(bf, num_checks=100000):
             
     actual_error_rate = (false_positives / num_checks)
     print(f"Actual False Positive Rate: {actual_error_rate * 100:.4f}%")
+    print("-" * 30)
+
+
+def test_query_time(bf, test_items):
+        """
+        Tests how long it takes to check 'n' items in the Bloom filter
+        and calculates the average time per query.
+        
+        :param test_items: The number items to check.
+        """
+        print(f"\n--- Testing Query Time ---")
+        print(f"Testing {len(test_items)} queries...")
+        
+        # Start performance counter
+        start_time = time.perf_counter()
+        
+        for item in test_items:
+            bf.check(item)
+            
+        # Stop the counter
+        end_time = time.perf_counter()
+        
+        # Calculate results
+        total_time = end_time - start_time
+        average_time = total_time / len(test_items)
+        
+        print(f"Total time for {len(test_items)} queries: {total_time:.6f} seconds")
+        print(f"Average time per query:     {average_time:.8f} seconds")
+        print(f"Estimated queries per sec:  {int(1 / average_time):,}\n")
